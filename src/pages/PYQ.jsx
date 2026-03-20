@@ -13,13 +13,18 @@ export default function PYQ() {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
 
-    fetch(`http://localhost:8080/api/pyq?subjectId=${subjectId}`, { headers })
+    fetch(
+      `https://btechhub-backend-production.up.railway.app/api/pyq?subjectId=${subjectId}`,
+      { headers },
+    )
       .then((r) => r.json())
       .then((data) => setPyqs(Array.isArray(data) ? data : []))
       .catch(() => {})
       .finally(() => setLoading(false));
 
-    fetch(`http://localhost:8080/api/subjects`, { headers })
+    fetch(`https://btechhub-backend-production.up.railway.app/api/subjects`, {
+      headers,
+    })
       .then((r) => r.json())
       .then((data) => {
         const subj = Array.isArray(data)

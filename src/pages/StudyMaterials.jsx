@@ -36,16 +36,21 @@ export default function StudyMaterials() {
       route: `/materials/${subjectId}`,
     });
 
-    fetch(`http://localhost:8080/api/materials?subjectId=${subjectId}`, {
-      headers,
-    })
+    fetch(
+      `https://btechhub-backend-production.up.railway.app/api/materials?subjectId=${subjectId}`,
+      {
+        headers,
+      },
+    )
       .then((r) => r.json())
       .then((data) => setMaterials(Array.isArray(data) ? data : []))
       .catch(() => {})
       .finally(() => setLoading(false));
 
     // Get subject name
-    fetch(`http://localhost:8080/api/subjects`, { headers })
+    fetch(`https://btechhub-backend-production.up.railway.app/api/subjects`, {
+      headers,
+    })
       .then((r) => r.json())
       .then((data) => {
         const subj = Array.isArray(data)

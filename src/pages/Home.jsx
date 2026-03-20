@@ -21,14 +21,18 @@ export default function Home() {
     const headers = { Authorization: `Bearer ${token}` };
 
     // Fetch semesters
-    fetch("http://localhost:8080/api/semesters", { headers })
+    fetch("https://btechhub-backend-production.up.railway.app/api/semesters", {
+      headers,
+    })
       .then((r) => r.json())
       .then((data) => setSemesters(Array.isArray(data) ? data : []))
       .catch(() => {})
       .finally(() => setLoading(false));
 
     // Fetch platform stats
-    fetch("http://localhost:8080/api/stats", { headers })
+    fetch("https://btechhub-backend-production.up.railway.app/api/stats", {
+      headers,
+    })
       .then((r) => r.json())
       .then((data) => setStats(data))
       .catch(() => {});

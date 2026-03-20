@@ -11,7 +11,7 @@ export default function Streams() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    fetch(`http://localhost:8080/api/streams`, {
+    fetch(`https://btechhub-backend-production.up.railway.app/api/streams`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((r) => r.json())

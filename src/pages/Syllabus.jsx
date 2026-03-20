@@ -14,9 +14,12 @@ export default function Syllabus() {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
 
-    fetch(`http://localhost:8080/api/syllabus?subjectId=${subjectId}`, {
-      headers,
-    })
+    fetch(
+      `https://btechhub-backend-production.up.railway.app/api/syllabus?subjectId=${subjectId}`,
+      {
+        headers,
+      },
+    )
       .then((r) => r.json())
       .then((data) => {
         const list = Array.isArray(data) ? data : [];
@@ -27,7 +30,9 @@ export default function Syllabus() {
       .catch(() => {})
       .finally(() => setLoading(false));
 
-    fetch(`http://localhost:8080/api/subjects`, { headers })
+    fetch(`https://btechhub-backend-production.up.railway.app/api/subjects`, {
+      headers,
+    })
       .then((r) => r.json())
       .then((data) => {
         const subj = Array.isArray(data)

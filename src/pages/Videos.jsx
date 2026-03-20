@@ -13,9 +13,12 @@ export default function Videos() {
     const token = localStorage.getItem("token");
     const headers = { Authorization: `Bearer ${token}` };
 
-    fetch(`http://localhost:8080/api/videos?subjectId=${subjectId}`, {
-      headers,
-    })
+    fetch(
+      `https://btechhub-backend-production.up.railway.app/api/videos?subjectId=${subjectId}`,
+      {
+        headers,
+      },
+    )
       .then((r) => r.json())
       .then((data) => {
         const list = Array.isArray(data) ? data : [];
@@ -25,7 +28,9 @@ export default function Videos() {
       .catch(() => {})
       .finally(() => setLoading(false));
 
-    fetch(`http://localhost:8080/api/subjects`, { headers })
+    fetch(`https://btechhub-backend-production.up.railway.app/api/subjects`, {
+      headers,
+    })
       .then((r) => r.json())
       .then((data) => {
         const subj = Array.isArray(data)

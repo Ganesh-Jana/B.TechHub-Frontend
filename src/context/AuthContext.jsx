@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     const storedToken = localStorage.getItem("token");
     if (!storedToken) return;
 
-    fetch("http://localhost:8080/api/auth/me", {
+    fetch("https://btechhub-backend-production.up.railway.app/api/auth/me", {
       headers: { Authorization: `Bearer ${storedToken}` },
     })
       .then((r) => (r.ok ? r.json() : null))
@@ -43,7 +43,7 @@ export const AuthProvider = ({ children }) => {
     setUser(userData);
 
     // Fetch role right after login
-    fetch("http://localhost:8080/api/auth/me", {
+    fetch("https://btechhub-backend-production.up.railway.app/api/auth/me", {
       headers: { Authorization: `Bearer ${tokenValue}` },
     })
       .then((r) => (r.ok ? r.json() : null))

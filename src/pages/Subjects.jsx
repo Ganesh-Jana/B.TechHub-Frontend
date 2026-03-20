@@ -14,7 +14,9 @@ export default function Subjects() {
     const headers = { Authorization: `Bearer ${token}` };
 
     // Fetch stream info
-    fetch(`http://localhost:8080/api/streams`, { headers })
+    fetch(`https://btechhub-backend-production.up.railway.app/api/streams`, {
+      headers,
+    })
       .then((r) => r.json())
       .then((data) => {
         const found = Array.isArray(data)
@@ -26,7 +28,7 @@ export default function Subjects() {
 
     // Fetch subjects
     fetch(
-      `http://localhost:8080/api/subjects?semesterId=${semId}&streamId=${streamId}`,
+      `https://btechhub-backend-production.up.railway.app/api/subjects?semesterId=${semId}&streamId=${streamId}`,
       { headers },
     )
       .then((r) => r.json())
