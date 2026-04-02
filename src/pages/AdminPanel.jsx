@@ -102,20 +102,17 @@ function AddMaterial({ subjects }) {
     setError("");
     setSuccess("");
     try {
-      await fetch(
-        "https://btechhub-backend-production.up.railway.app/api/materials",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({
-            ...form,
-            subjectId: parseInt(form.subjectId),
-          }),
+      await fetch("https://b-techhub-backend-4.onrender.com/api/materials", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      );
+        body: JSON.stringify({
+          ...form,
+          subjectId: parseInt(form.subjectId),
+        }),
+      });
       setSuccess("Study material added successfully!");
       setForm({
         title: "",
@@ -289,22 +286,19 @@ function AddPYQ({ subjects }) {
     setError("");
     setSuccess("");
     try {
-      await fetch(
-        "https://btechhub-backend-production.up.railway.app/api/pyq",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({
-            ...form,
-            year: parseInt(form.year),
-            pages: parseInt(form.pages) || 0,
-            subjectId: parseInt(form.subjectId),
-          }),
+      await fetch("https://b-techhub-backend-4.onrender.com/api/pyq", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      );
+        body: JSON.stringify({
+          ...form,
+          year: parseInt(form.year),
+          pages: parseInt(form.pages) || 0,
+          subjectId: parseInt(form.subjectId),
+        }),
+      });
       setSuccess(`PYQ for ${form.year} added successfully!`);
       setForm({
         year: "",
@@ -472,21 +466,18 @@ function AddVideo({ subjects }) {
     setSuccess("");
     const ytId = extractYoutubeId(form.youtubeId);
     try {
-      await fetch(
-        "https://btechhub-backend-production.up.railway.app/api/videos",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-          body: JSON.stringify({
-            ...form,
-            youtubeId: ytId,
-            subjectId: parseInt(form.subjectId),
-          }),
+      await fetch("https://b-techhub-backend-4.onrender.com/api/videos", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-      );
+        body: JSON.stringify({
+          ...form,
+          youtubeId: ytId,
+          subjectId: parseInt(form.subjectId),
+        }),
+      });
       setSuccess("Video added successfully!");
       setForm({
         title: "",
@@ -658,13 +649,13 @@ function ManageSubjects({ subjects, onSubjectsChanged }) {
   };
 
   useEffect(() => {
-    fetch("https://btechhub-backend-production.up.railway.app/api/semesters", {
+    fetch("https://b-techhub-backend-4.onrender.com/api/semesters", {
       headers,
     })
       .then((r) => r.json())
       .then((d) => setSemesters(Array.isArray(d) ? d : []))
       .catch(() => {});
-    fetch("https://btechhub-backend-production.up.railway.app/api/streams", {
+    fetch("https://b-techhub-backend-4.onrender.com/api/streams", {
       headers,
     })
       .then((r) => r.json())
@@ -682,7 +673,7 @@ function ManageSubjects({ subjects, onSubjectsChanged }) {
     setSuccess("");
     try {
       const res = await fetch(
-        "https://btechhub-backend-production.up.railway.app/api/subjects",
+        "https://b-techhub-backend-4.onrender.com/api/subjects",
         {
           method: "POST",
           headers,
@@ -718,7 +709,7 @@ function ManageSubjects({ subjects, onSubjectsChanged }) {
     setSuccess("");
     try {
       const res = await fetch(
-        `https://btechhub-backend-production.up.railway.app/api/subjects/${subject.id}`,
+        `https://b-techhub-backend-4.onrender.com/api/subjects/${subject.id}`,
         {
           method: "DELETE",
           headers,
@@ -1252,7 +1243,7 @@ function UploadSyllabusPdf({ subjects }) {
     setSuccess("");
     try {
       const res = await fetch(
-        `https://btechhub-backend-production.up.railway.app/api/subjects/${selectedSubject}/syllabus-pdf`,
+        `https://b-techhub-backend-4.onrender.com/api/subjects/${selectedSubject}/syllabus-pdf`,
         {
           method: "PATCH",
           headers: {
@@ -1420,7 +1411,7 @@ export default function AdminPanel() {
 
   const loadSubjects = () => {
     setLoadingSubjects(true);
-    fetch("https://btechhub-backend-production.up.railway.app/api/subjects", {
+    fetch("https://b-techhub-backend-4.onrender.com/api/subjects", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
       .then((r) => r.json())

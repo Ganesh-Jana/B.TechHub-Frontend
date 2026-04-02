@@ -21,7 +21,7 @@ export default function Home() {
     const headers = { Authorization: `Bearer ${token}` };
 
     // Fetch semesters
-    fetch("https://btechhub-backend-production.up.railway.app/api/semesters", {
+    fetch("https://b-techhub-backend-4.onrender.com/api/semesters", {
       headers,
     })
       .then((r) => r.json())
@@ -30,7 +30,7 @@ export default function Home() {
       .finally(() => setLoading(false));
 
     // Fetch platform stats
-    fetch("https://btechhub-backend-production.up.railway.app/api/stats", {
+    fetch("https://b-techhub-backend-4.onrender.com/api/stats", {
       headers,
     })
       .then((r) => r.json())

@@ -15,7 +15,7 @@ export default function Syllabus() {
     const headers = { Authorization: `Bearer ${token}` };
 
     fetch(
-      `https://btechhub-backend-production.up.railway.app/api/syllabus?subjectId=${subjectId}`,
+      `https://b-techhub-backend-4.onrender.com/api/syllabus?subjectId=${subjectId}`,
       {
         headers,
       },
@@ -30,7 +30,7 @@ export default function Syllabus() {
       .catch(() => {})
       .finally(() => setLoading(false));
 
-    fetch(`https://btechhub-backend-production.up.railway.app/api/subjects`, {
+    fetch(`https://b-techhub-backend-4.onrender.com/api/subjects`, {
       headers,
     })
       .then((r) => r.json())

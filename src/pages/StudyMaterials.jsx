@@ -37,7 +37,7 @@ export default function StudyMaterials() {
     });
 
     fetch(
-      `https://btechhub-backend-production.up.railway.app/api/materials?subjectId=${subjectId}`,
+      `https://b-techhub-backend-4.onrender.com/api/materials?subjectId=${subjectId}`,
       {
         headers,
       },
@@ -48,7 +48,7 @@ export default function StudyMaterials() {
       .finally(() => setLoading(false));
 
     // Get subject name
-    fetch(`https://btechhub-backend-production.up.railway.app/api/subjects`, {
+    fetch(`https://b-techhub-backend-4.onrender.com/api/subjects`, {
       headers,
     })
       .then((r) => r.json())
