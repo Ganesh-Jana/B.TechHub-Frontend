@@ -102,7 +102,7 @@ function AddMaterial({ subjects }) {
     setError("");
     setSuccess("");
     try {
-      await fetch("https://b-techhub-backend-4.onrender.com/api/materials", {
+      await fetch("https://b-techhub-backend-6.onrender.com/api/materials", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -286,7 +286,7 @@ function AddPYQ({ subjects }) {
     setError("");
     setSuccess("");
     try {
-      await fetch("https://b-techhub-backend-4.onrender.com/api/pyq", {
+      await fetch("https://b-techhub-backend-6.onrender.com/api/pyq", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -466,7 +466,7 @@ function AddVideo({ subjects }) {
     setSuccess("");
     const ytId = extractYoutubeId(form.youtubeId);
     try {
-      await fetch("https://b-techhub-backend-4.onrender.com/api/videos", {
+      await fetch("https://b-techhub-backend-6.onrender.com/api/videos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -649,13 +649,13 @@ function ManageSubjects({ subjects, onSubjectsChanged }) {
   };
 
   useEffect(() => {
-    fetch("https://b-techhub-backend-4.onrender.com/api/semesters", {
+    fetch("https://b-techhub-backend-6.onrender.com/api/semesters", {
       headers,
     })
       .then((r) => r.json())
       .then((d) => setSemesters(Array.isArray(d) ? d : []))
       .catch(() => {});
-    fetch("https://b-techhub-backend-4.onrender.com/api/streams", {
+    fetch("https://b-techhub-backend-6.onrender.com/api/streams", {
       headers,
     })
       .then((r) => r.json())
@@ -673,7 +673,7 @@ function ManageSubjects({ subjects, onSubjectsChanged }) {
     setSuccess("");
     try {
       const res = await fetch(
-        "https://b-techhub-backend-4.onrender.com/api/subjects",
+        "https://b-techhub-backend-6.onrender.com/api/subjects",
         {
           method: "POST",
           headers,
@@ -709,7 +709,7 @@ function ManageSubjects({ subjects, onSubjectsChanged }) {
     setSuccess("");
     try {
       const res = await fetch(
-        `https://b-techhub-backend-4.onrender.com/api/subjects/${subject.id}`,
+        `https://b-techhub-backend-6.onrender.com/api/subjects/${subject.id}`,
         {
           method: "DELETE",
           headers,
@@ -1243,7 +1243,7 @@ function UploadSyllabusPdf({ subjects }) {
     setSuccess("");
     try {
       const res = await fetch(
-        `https://b-techhub-backend-4.onrender.com/api/subjects/${selectedSubject}/syllabus-pdf`,
+        `https://b-techhub-backend-6.onrender.com/api/subjects/${selectedSubject}/syllabus-pdf`,
         {
           method: "PATCH",
           headers: {
@@ -1411,7 +1411,7 @@ export default function AdminPanel() {
 
   const loadSubjects = () => {
     setLoadingSubjects(true);
-    fetch("https://b-techhub-backend-4.onrender.com/api/subjects", {
+    fetch("https://b-techhub-backend-6.onrender.com/api/subjects", {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
       .then((r) => r.json())

@@ -1,4 +1,4 @@
-const BASE_URL = "https://b-techhub-backend-4.onrender.com/api";
+const BASE_URL = "https://b-techhub-backend-6.onrender.com/api";
 
 const getHeaders = () => ({
   "Content-Type": "application/json",

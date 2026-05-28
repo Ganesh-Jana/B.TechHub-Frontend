@@ -35,9 +35,9 @@ export default function StudyMaterials() {
       type: "material",
       route: `/materials/${subjectId}`,
     });
-
+    // https://b-techhub-backend-6.onrender.com
     fetch(
-      `https://b-techhub-backend-4.onrender.com/api/materials?subjectId=${subjectId}`,
+      `https://b-techhub-backend-6.onrender.com/api/materials?subjectId=${subjectId}`,
       {
         headers,
       },
@@ -48,7 +48,7 @@ export default function StudyMaterials() {
       .finally(() => setLoading(false));
 
     // Get subject name
-    fetch(`https://b-techhub-backend-4.onrender.com/api/subjects`, {
+    fetch(`https://b-techhub-backend-6.onrender.com/api/subjects`, {
       headers,
     })
       .then((r) => r.json())

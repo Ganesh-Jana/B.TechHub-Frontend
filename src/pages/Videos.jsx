@@ -14,7 +14,7 @@ export default function Videos() {
     const headers = { Authorization: `Bearer ${token}` };
 
     fetch(
-      `https://b-techhub-backend-4.onrender.com/api/videos?subjectId=${subjectId}`,
+      `https://b-techhub-backend-6.onrender.com/api/videos?subjectId=${subjectId}`,
       {
         headers,
       },
@@ -28,7 +28,7 @@ export default function Videos() {
       .catch(() => {})
       .finally(() => setLoading(false));
 
-    fetch(`https://b-techhub-backend-4.onrender.com/api/subjects`, {
+    fetch(`https://b-techhub-backend-6.onrender.com/api/subjects`, {
       headers,
     })
       .then((r) => r.json())

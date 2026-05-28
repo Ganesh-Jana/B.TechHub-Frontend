@@ -14,7 +14,7 @@ export default function PYQ() {
     const headers = { Authorization: `Bearer ${token}` };
 
     fetch(
-      `https://b-techhub-backend-4.onrender.com/api/pyq?subjectId=${subjectId}`,
+      `https://b-techhub-backend-6.onrender.com/api/pyq?subjectId=${subjectId}`,
       { headers },
     )
       .then((r) => r.json())
@@ -22,7 +22,7 @@ export default function PYQ() {
       .catch(() => {})
       .finally(() => setLoading(false));
 
-    fetch(`https://b-techhub-backend-4.onrender.com/api/subjects`, {
+    fetch(`https://b-techhub-backend-6.onrender.com/api/subjects`, {
       headers,
     })
       .then((r) => r.json())
