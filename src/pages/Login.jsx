@@ -103,6 +103,11 @@ export default function Login() {
           display: flex; gap: 12px; align-items: flex-start;
           transition: all 0.2s;
         }
+          @media (max-width: 768px) {
+  .login-left  { display: none !important; }
+  .login-right { width: 100% !important; padding: 32px 24px !important; min-height: 100vh; }
+  .feat-grid   { grid-template-columns: 1fr !important; }
+}
         .feat-card:hover {
           background: rgba(255,255,255,0.07);
           border-color: rgba(99,157,255,0.3);
@@ -147,8 +152,9 @@ export default function Login() {
       {/* ── LEFT PANEL ── */}
       <div
         style={{
+          className: "login-left",
           flex: 1,
-          display: window.innerWidth < 786 ? "none" : "flex",
+          display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           padding: "48px 56px",
@@ -417,7 +423,8 @@ export default function Login() {
       {/* ── RIGHT PANEL ── */}
       <div
         style={{
-          width: window.innerWidth < 786 ? "100%" : 420,
+          className: "login-right",
+          width: 420,
           background: "#fff",
           display: "flex",
           flexDirection: "column",
