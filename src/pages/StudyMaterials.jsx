@@ -35,7 +35,7 @@ export default function StudyMaterials() {
       type: "material",
       route: `/materials/${subjectId}`,
     });
-    // https://b-techhub-backend-6.onrender.com
+    //
     fetch(
       `https://b-techhub-backend-6.onrender.com/api/materials?subjectId=${subjectId}`,
       {
