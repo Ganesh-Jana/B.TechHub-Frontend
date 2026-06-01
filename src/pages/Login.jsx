@@ -68,6 +68,7 @@ export default function Login() {
         display: "flex",
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         background: "#060d1a",
+        flexDirection: window.innerWidth < 786 ? "column" : "row",
       }}
     >
       <style>{`
@@ -147,7 +148,7 @@ export default function Login() {
       <div
         style={{
           flex: 1,
-          display: "flex",
+          display: window.innerWidth < 786 ? "none" : "flex",
           flexDirection: "column",
           justifyContent: "center",
           padding: "48px 56px",
@@ -416,7 +417,7 @@ export default function Login() {
       {/* ── RIGHT PANEL ── */}
       <div
         style={{
-          width: 480,
+          width: window.innerWidth < 786 ? "100%" : "480px",
           background: "#fff",
           display: "flex",
           flexDirection: "column",
