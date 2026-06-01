@@ -149,8 +149,8 @@ export default function Login() {
 
 @media (max-width: 768px) {
   .login-wrapper { flex-direction: column; }
-  .login-left { display: none !important; }
-  .login-right { width: 100% !important; min-width: unset !important; padding: 40px 20px !important; min-height: 100vh; }
+  .login-left { display: fles !important; padding: 40px 20px !important; min-height: auto !important; }
+  .login-right { width: 100% !important; min-width: unset !important; padding: 40px 20px !important;  }
 }
 
       `}</style>
