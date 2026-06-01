@@ -417,7 +417,7 @@ export default function Login() {
       {/* ── RIGHT PANEL ── */}
       <div
         style={{
-          width: window.innerWidth < 786 ? "100%" : "480px",
+          width: window.innerWidth < 786 ? "100%" : 420,
           background: "#fff",
           display: "flex",
           flexDirection: "column",
