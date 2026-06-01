@@ -103,7 +103,7 @@ export default function Login() {
           display: flex; gap: 12px; align-items: flex-start;
           transition: all 0.2s;
         }
-          @media (max-width: 1000px) {
+          @media (max-width: 768px) {
   .login-left  { display: none !important; }
   .login-right { width: 100% !important; padding: 32px 24px !important; min-height: 100vh; }
   .feat-grid   { grid-template-columns: 1fr !important; }
