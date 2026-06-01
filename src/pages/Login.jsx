@@ -63,12 +63,12 @@ export default function Login() {
 
   return (
     <div
+      className="login-wrapper"
       style={{
         minHeight: "100vh",
         display: "flex",
         fontFamily: "'Plus Jakarta Sans', sans-serif",
         background: "#060d1a",
-        flexDirection: window.innerWidth < 786 ? "column" : "row",
       }}
     >
       <style>{`
@@ -103,11 +103,6 @@ export default function Login() {
           display: flex; gap: 12px; align-items: flex-start;
           transition: all 0.2s;
         }
-          @media (max-width: 768px) {
-  .login-left  { display: none !important; }
-  .login-right { width: 100% !important; padding: 32px 24px !important; min-height: 100vh; }
-  .feat-grid   { grid-template-columns: 1fr !important; }
-}
         .feat-card:hover {
           background: rgba(255,255,255,0.07);
           border-color: rgba(99,157,255,0.3);
@@ -147,21 +142,21 @@ export default function Login() {
           transition: all 0.2s;
         }
         .stat-pill:hover { background: rgba(255,255,255,0.1); border-color: rgba(99,157,255,0.4); }
+
+        .login-wrapper { display: flex; flex-direction: row; min-height: 100vh; }
+.login-left { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 48px 56px; position: relative; overflow: hidden; }
+.login-right { width: 480px; background: #fff; display: flex; flex-direction: column; justify-content: center; padding: 48px 44px; position: relative; }
+
+@media (max-width: 768px) {
+  .login-wrapper { flex-direction: column; }
+  .login-left { display: none !important; }
+  .login-right { width: 100% !important; min-width: unset !important; padding: 40px 20px !important; min-height: 100vh; }
+}
+
       `}</style>
 
       {/* ── LEFT PANEL ── */}
-      <div
-        style={{
-          className: "login-left",
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "48px 56px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
+      <div className="login-left">
         {/* Background orbs */}
         <div
           className="glow-orb"
@@ -421,18 +416,7 @@ export default function Login() {
       </div>
 
       {/* ── RIGHT PANEL ── */}
-      <div
-        style={{
-          className: "login-right",
-          width: 420,
-          background: "#fff",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          padding: "48px 44px",
-          position: "relative",
-        }}
-      >
+      <div className="login-right">
         {/* Top badge */}
         <div style={{ position: "absolute", top: 28, right: 28 }}>
           <div
