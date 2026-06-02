@@ -93,13 +93,7 @@ export default function Subjects() {
       </div>
 
       {loading ? (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 14,
-          }}
-        >
+        <div className="subject-grid">
           {Array.from({ length: 6 }).map((_, i) => (
             <div
               key={i}
@@ -130,19 +124,38 @@ export default function Subjects() {
           <div style={{ fontSize: 13 }}>Coming Soon....</div>
         </div>
       ) : (
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: 14,
-          }}
-        >
+        <div className="subject-grid">
           {subjects.map((subject) => (
             <SubjectCard key={subject.id} subject={subject} />
           ))}
         </div>
       )}
-      <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }`}</style>
+      <style>{`
+@keyframes pulse {
+  0%,100% { opacity:1; }
+  50% { opacity:0.5; }
+}
+
+.subject-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+/* Tablet */
+@media (max-width:768px){
+  .subject-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width:480px){
+  .subject-grid{
+    grid-template-columns:1fr;
+  }
+}
+`}</style>
     </Layout>
   );
 }
