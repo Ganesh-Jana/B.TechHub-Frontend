@@ -351,7 +351,7 @@ export default function Home() {
 /* Stats */
 .stats-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(220px,2fr));
   gap:14px;
   margin-bottom:28px;
 }
