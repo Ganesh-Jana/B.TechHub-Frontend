@@ -20,6 +20,59 @@ export default function Streams() {
       .finally(() => setLoading(false));
   }, [semId]);
 
+  const renderContent = () => {
+    if (loading) {
+      return (
+        <div className="stream-grid">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div
+              key={i}
+              style={{
+                height: 110,
+                borderRadius: 14,
+                background: "#f1f5f9",
+                animation: "pulse 1.5s infinite",
+              }}
+            />
+          ))}
+        </div>
+      );
+    }
+
+    if (streams.length === 0) {
+      return (
+        <div
+          style={{
+            textAlign: "center",
+            padding: 48,
+            background: "#fff",
+            borderRadius: 16,
+            border: "1.5px dashed #e5e7eb",
+            color: "#9ca3af",
+          }}
+        >
+          <div style={{ fontSize: 36, marginBottom: 10 }}>📭</div>
+          <div style={{ fontWeight: 600, color: "#374151", marginBottom: 4 }}>
+            No streams found
+          </div>
+          <div style={{ fontSize: 13 }}>Coming Soon....</div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="stream-grid">
+        {streams.map((stream) => (
+          <StreamCard
+            key={stream.id}
+            stream={stream}
+            onClick={() => navigate(`/subjects/${semId}/${stream.id}`)}
+          />
+        ))}
+      </div>
+    );
+  };
+
   return (
     <Layout
       title={`Semester ${semId} — Select Your Stream`}
@@ -49,62 +102,34 @@ export default function Streams() {
           </div>
         </div>
 
-        {loading ? (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 16,
-            }}
-          >
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div
-                key={i}
-                style={{
-                  height: 110,
-                  borderRadius: 14,
-                  background: "#f1f5f9",
-                  animation: "pulse 1.5s infinite",
-                }}
-              />
-            ))}
-          </div>
-        ) : streams.length === 0 ? (
-          <div
-            style={{
-              textAlign: "center",
-              padding: 48,
-              background: "#fff",
-              borderRadius: 16,
-              border: "1.5px dashed #e5e7eb",
-              color: "#9ca3af",
-            }}
-          >
-            <div style={{ fontSize: 36, marginBottom: 10 }}>📭</div>
-            <div style={{ fontWeight: 600, color: "#374151", marginBottom: 4 }}>
-              No streams found
-            </div>
-            <div style={{ fontSize: 13 }}>Coming Soon....</div>
-          </div>
-        ) : (
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, 1fr)",
-              gap: 16,
-            }}
-          >
-            {streams.map((stream) => (
-              <StreamCard
-                key={stream.id}
-                stream={stream}
-                onClick={() => navigate(`/subjects/${semId}/${stream.id}`)}
-              />
-            ))}
-          </div>
-        )}
+        {renderContent()}
       </div>
-      <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }`}</style>
+      <style>{`
+@keyframes pulse {
+  0%,100% { opacity:1; }
+  50% { opacity:0.5; }
+}
+
+.stream-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+/* Tablet */
+@media (max-width:768px){
+  .stream-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width:480px){
+  .stream-grid{
+    grid-template-columns:1fr;
+  }
+}
+`}</style>
     </Layout>
   );
 }
