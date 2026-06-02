@@ -65,15 +65,16 @@ export default function Home() {
     <Layout title="">
       {/* Welcome banner */}
       <div
-        style={{
-          background:
-            "linear-gradient(135deg, #0f1b2d 0%, #1e3a5f 50%, #2563eb 100%)",
-          borderRadius: 20,
-          padding: "32px 36px",
-          marginBottom: 28,
-          position: "relative",
-          overflow: "hidden",
-        }}
+        className="welcome-banner"
+        // style={{
+        //   background:
+        //     "linear-gradient(135deg, #0f1b2d 0%, #1e3a5f 50%, #2563eb 100%)",
+        //   borderRadius: 20,
+        //   padding: "32px 36px",
+        //   marginBottom: 28,
+        //   position: "relative",
+        //   overflow: "hidden",
+        // }}
       >
         <div
           style={{
@@ -109,16 +110,17 @@ export default function Home() {
             👋 Welcome back, {user?.name || "Student"}
           </div>
           <h2
-            style={{
-              fontSize: 26,
-              fontWeight: 800,
-              color: "#fff",
-              margin: "0 0 8px",
-              letterSpacing: "-0.5px",
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-            }}
+            className="welcome-title"
+            // style={{
+            //   fontSize: 26,
+            //   fontWeight: 800,
+            //   color: "#fff",
+            //   margin: "0 0 8px",
+            //   letterSpacing: "-0.5px",
+            //   display: "flex",
+            //   alignItems: "center",
+            //   gap: 10,
+            // }}
           >
             <span>🎓</span>
             <span>Welcome to </span>
@@ -136,8 +138,12 @@ export default function Home() {
             Access notes, syllabus, PYQs, and video lectures for all semesters
             and branches.
           </p>
-          <div style={{ display: "flex", gap: 10 }}>
+          <div
+            className="banner-buttons"
+            // style={{ display: "flex", gap: 10 }}
+          >
             <button
+              className="banner-btn primary"
               onClick={() => navigate("/calculator")}
               style={{
                 padding: "9px 20px",
@@ -153,6 +159,7 @@ export default function Home() {
               🧮 Open Calculators
             </button>
             <button
+              className="banner-btn secondary"
               onClick={() => navigate("/dashboard")}
               style={{
                 padding: "9px 20px",
@@ -173,12 +180,13 @@ export default function Home() {
 
       {/* Dynamic Stats */}
       <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(4, 1fr)",
-          gap: 14,
-          marginBottom: 28,
-        }}
+        className="stats-grid"
+        // style={{
+        //   display: "grid",
+        //   gridTemplateColumns: "repeat(4, 1fr)",
+        //   gap: 14,
+        //   marginBottom: 28,
+        // }}
       >
         {statCards.map((s) => (
           <div
@@ -238,11 +246,12 @@ export default function Home() {
 
         {loading && (
           <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: 14,
-            }}
+            className="semester-grid"
+            // style={{
+            //   display: "grid",
+            //   gridTemplateColumns: "repeat(4, 1fr)",
+            //   gap: 14,
+            // }}
           >
             {Array.from({ length: 8 }).map((_, i) => (
               <div
@@ -281,12 +290,13 @@ export default function Home() {
 
         {!loading && semesters.length > 0 && (
           <div
-            style={{
-              display: "grid",
-              // gridTemplateColumns: "repeat(4, 1fr)",
-              gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
-              gap: 14,
-            }}
+            className="semester-grid"
+            // style={{
+            //   display: "grid",
+            //   // gridTemplateColumns: "repeat(4, 1fr)",
+            //   gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
+            //   gap: 14,
+            // }}
           >
             {semesters.map((sem) => (
               <SemesterCard
@@ -298,7 +308,108 @@ export default function Home() {
           </div>
         )}
       </div>
-      <style>{`@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }`}</style>
+      <style>{`
+@keyframes pulse {
+  0%,100% { opacity:1 }
+  50% { opacity:0.5 }
+}
+
+/* Welcome Banner */
+.welcome-banner{
+  background: linear-gradient(135deg,#0f1b2d 0%,#1e3a5f 50%,#2563eb 100%);
+  border-radius:20px;
+  padding:32px 36px;
+  margin-bottom:28px;
+  position:relative;
+  overflow:hidden;
+}
+
+.welcome-title{
+  font-size:26px;
+  font-weight:800;
+  color:#fff;
+  margin:0 0 8px;
+  letter-spacing:-0.5px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+.banner-buttons{
+  display:flex;
+  gap:10px;
+}
+
+.banner-btn{
+  padding:10px 20px;
+  border-radius:10px;
+  font-size:13px;
+  cursor:pointer;
+}
+
+/* Stats */
+.stats-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin-bottom:28px;
+}
+
+/* Semesters */
+.semester-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:14px;
+}
+
+/* Tablet */
+@media (max-width:768px){
+
+  .welcome-banner{
+    padding:24px;
+  }
+
+  .welcome-title{
+    font-size:22px;
+  }
+
+  .banner-buttons{
+    flex-direction:column;
+    width:100%;
+  }
+
+  .banner-btn{
+    width:100%;
+  }
+
+  .stats-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width:480px){
+
+  .welcome-banner{
+    padding:18px;
+    border-radius:16px;
+  }
+
+  .welcome-title{
+    font-size:18px;
+    line-height:1.4;
+  }
+
+  .stats-grid{
+    grid-template-columns:1fr;
+  }
+
+  .semester-grid{
+    grid-template-columns:1fr;
+  }
+}
+`}</style>
     </Layout>
   );
 }
