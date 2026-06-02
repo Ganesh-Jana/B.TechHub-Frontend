@@ -236,12 +236,11 @@ export default function Home() {
           </div>
         </div>
 
-        {loading ? (
+        {loading && (
           <div
             style={{
               display: "grid",
-              // gridTemplateColumns: "repeat(4, 1fr)",
-              gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+              gridTemplateColumns: "repeat(4, 1fr)",
               gap: 14,
             }}
           >
@@ -257,7 +256,9 @@ export default function Home() {
               />
             ))}
           </div>
-        ) : semesters.length === 0 ? (
+        )}
+
+        {!loading && semesters.length === 0 && (
           <div
             style={{
               textAlign: "center",
@@ -276,11 +277,14 @@ export default function Home() {
               Add semesters to MySQL to see them here.
             </div>
           </div>
-        ) : (
+        )}
+
+        {!loading && semesters.length > 0 && (
           <div
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
+              // gridTemplateColumns: "repeat(4, 1fr)",
+              gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
               gap: 14,
             }}
           >
