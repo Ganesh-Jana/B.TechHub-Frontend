@@ -49,11 +49,16 @@ export default function Login() {
     e.preventDefault();
     setLoading(true);
     setError("");
+    const wakeTimer = setTimeout(() => {
+      setError("⏳ Server is waking up, please wait 30-60 seconds...");
+    }, 3000);
     try {
       const res = await api.login(form);
+      claerTimeout(wakeTimer);
       login(res.token, res.user);
       navigate("/");
     } catch (err) {
+      claerTimeout(wakeTimer);
       // No dummy fallback — real backend auth only
       setError("Invalid email or password. Please check your credentials.");
     } finally {
@@ -641,7 +646,7 @@ export default function Login() {
           </div>
 
           <button className="sign-btn" type="submit" disabled={loading}>
-            {loading ? "Signing in…" : "Sign In →"}
+            {loading ? "Please wait..." : "Sign In →"}
           </button>
         </form>
 
