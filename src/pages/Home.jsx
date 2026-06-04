@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout";
 import SemesterCard from "../components/SemesterCard";
 import { useAuth } from "../context/AuthContext";
+import AIChatbot from "../components/AIChatbot";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -424,6 +425,7 @@ export default function Home() {
   }
 }
 `}</style>
+      <AIChatbot />
     </Layout>
   );
 }
