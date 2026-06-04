@@ -42,16 +42,20 @@ export default function AIChatbot() {
     setError("");
 
     try {
-      const response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-sonnet-4-20250514",
-          max_tokens: 1000,
-          system: SYSTEM_PROMPT,
-          messages: updatedMessages,
-        }),
-      });
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        "https://b-techhub-backend-6.onrender.com/api/ai/chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            messages: updatedMessages,
+          }),
+        },
+      );
 
       const data = await response.json();
       const reply =
